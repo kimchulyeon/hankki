@@ -1,0 +1,13 @@
+[
+  {
+    "name": "cafe24-pc-skin",
+    "host": "MALL_ID.ftp.cafe24.com",
+    "protocol": "ftp",
+    "port": 21,
+    "username": "MALL_ID",
+    "password": "FTP_PASSWORD",
+    "remotePath": "/sde_design/skin숫자/",
+    "uploadOnSave": true,
+    "ignore": [".vscode", ".git", ".DS_Store", "README.md", "docs"]
+  }
+]
