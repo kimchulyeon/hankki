@@ -1,0 +1,93 @@
+      <table border="1" summary="" module="product_option">
+        <!--
+                $use_per_add_option = yes
+                -->
+        <caption>
+          상품 옵션
+        </caption>
+        <tbody module="product_option">
+          <!-- 기본 옵션 DOM은 구매 로직에 필요해서 숨김 처리만 함 -->
+          <tr class="pick-native-hidden">
+            <th scope="row">{$option_name}</th>
+            <td>
+              {$form.option}
+              <p class="value">{$option_desc}</p>
+            </td>
+          </tr>
+          <tr module="product_quantity">
+            <th scope="row">수량</th>
+            <td>
+              <div class="ec-base-qty">
+                {$form.quantity}
+                <a href="javascript:;" class="qtyUp eClearUp"><img
+                    src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif"
+                    id="{$quantity_up_id}"
+                    alt="증가"
+                    class="up {$quantity_up_class}"
+                /></a>
+                <a href="javascript:;" class="qtyDown eClearDown"><img
+                    src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif"
+                    id="{$quantity_down_id}"
+                    alt="감소"
+                    class="down {$quantity_down_class}"
+                /></a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr module="product_addoption">
+            <th scope="row">{$add_option_name}</th>
+            <td>
+              {$form.add_option}
+              <span class="txtByte" title="현재글자수/최대글자수">(<strong class="length">0</strong>/{$option_maxlength})</span>
+            </td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr
+            class="{$option_push_button_display|display}"
+            id="{$option_push_button_id}">
+            <td colspan="2" class="selectButton">
+              <a
+                href="#none"
+                class="btnSubmit sizeS"
+                onclick="{$action_push_button}">옵션선택</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <dl module="product_quantity" class="ec-base-desc quantity">
+        <dt>수량</dt>
+        <dd>
+          <div class="ec-base-qty">
+            {$form.quantity}
+            <a href="javascript:;" class="qtyUp eClearUp"><img
+                src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif"
+                id="{$quantity_up_id}"
+                alt="증가"
+                class="up {$quantity_up_class}"
+            /></a>
+            <a href="javascript:;" class="qtyDown eClearDown"><img
+                src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif"
+                id="{$quantity_down_id}"
+                alt="감소"
+                class="down {$quantity_down_class}"
+            /></a>
+          </div>
+        </dd>
+      </dl>
+
+      <div class="guideArea">
+        <p class="info {$limit_display|display}">
+          (최소주문수량 {$minimum_limit}개 이상<span
+            class="{$maximum_limit_display|display}">
+            / 최대주문수량 {$maximum_limit}개 이하</span>)
+        </p>
+
+        <span class="sizeGuide {$size_guide_display|display}"><a
+            href="#none"
+            class="{$size_guide_class}"
+            product_no="{$product_no}">사이즈 가이드</a></span>
+      </div>

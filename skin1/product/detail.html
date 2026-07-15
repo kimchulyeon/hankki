@@ -1,0 +1,57 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--
+    $category_page = /product/list.html
+    $project_page = /product/project.html
+    $jointbuy_page = /product/jointbuy.html
+-->
+<!-- 현재 위치 경로 (기본 스킨 코드, 파일 분리만 함) -->
+<!--@import(/product/detail/01-headcategory.html)-->
+<div module="product_detail">
+  <!--@css(/css/module/product/detail.css)-->
+  <!--
+		$coupon_download_page = /coupon/coupon_productdetail.html
+    -->
+  <!-- 상품명 영역 (기본 스킨 코드, 파일 분리만 함) -->
+  <!--@import(/product/detail/02-heading.html)-->
+  <div class="detailArea">
+    <!-- 상품 이미지 영역 (기본 스킨 코드, 파일 분리만 함) -->
+    <!--@import(/product/detail/03-image.html)-->
+    <div class="infoArea">
+      <!-- 가격/기본 정보 영역 (기본 스킨 코드, 파일 분리만 함) -->
+      <!--@import(/product/detail/04-summary.html)-->
+
+      <!-- 골라담기 옵션 UI -->
+      <!--@import(/product/pick-option.html)-->
+
+      <!-- 기본 옵션/수량 영역 (기본 스킨 코드, 파일 분리만 함) -->
+      <!--@import(/product/detail/05-option.html)-->
+
+      <!-- 세트상품 영역 (기본 스킨 코드, 파일 분리만 함) -->
+      <!--@import(/product/detail/06-setproduct.html)-->
+
+      <!-- 추가구성상품 영역 (기본 스킨 코드, 파일 분리만 함) -->
+      <!--@import(/product/detail/07-addproduct.html)-->
+
+      <!-- 선택상품 목록/총금액/구매버튼 영역 (기본 스킨 코드, 파일 분리만 함) -->
+      <!--@import(/product/detail/08-total-action.html)-->
+    </div>
+  </div>
+
+  <!-- 공급사:판매사정보 -->
+  <div class="supplyInfo {$supply_info_display|display}">{$supply_info}</div>
+  <!-- //공급사:판매사정보 -->
+
+  <div class="eventArea {$common_event_a|display}">
+    <h3><span>이벤트</span></h3>
+    <div class="event">{$common_event_a}</div>
+  </div>
+</div>
+
+<!--@import(/coupon/coupon_productdetail.html)-->
+
+<!-- 상세정보/구매안내/후기/QnA 탭 (기본 스킨 코드, 파일 분리만 함) -->
+<!--@import(/product/detail/09-tabs.html)-->
+
+<!-- 관련상품 영역 (기본 스킨 코드, 파일 분리만 함) -->
+<!--@import(/product/detail/10-relation.html)-->
+<!--@define(cmc_log)-->

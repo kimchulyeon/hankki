@@ -1,0 +1,22 @@
+  <div class="headingArea">
+    <h2>[{$product_code}] {$name}</h2>
+    <span class="delivery {$delvtype_display|display}">(해외배송 가능상품)</span>
+    <span class="icon">{$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon}
+      {$product_icons} {$today_arrival_icon} {$pickup_icon} {$benefit_icons}
+      <img
+        src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_rental.png"
+        alt=""
+        class="{$rental_information_display|display}"
+      />
+      {$regular_delivery_icon} {$cultural_tax_icon}</span>
+    <!-- 공급사 바로가기버튼 영역 -->
+    <div class="supply {$supply_link_display|display}">
+      <span>{$supply_top_logo}</span>
+      <a
+        href="#none"
+        onclick="{$supply_go_action}"><img src="{$supply_go_img}" alt="공급사 바로가기"
+      /></a>
+    </div>
+    <!-- //공급사 바로가기버튼 영역 -->
+  </div>
+

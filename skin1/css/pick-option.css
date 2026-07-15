@@ -1,0 +1,223 @@
+/* =====================================================================
+ *  골라담기 옵션 UI 스타일 (pick-option.css) — 피그마 시안 기준
+ * ===================================================================== */
+
+#pickOptionArea {
+  margin: 18px 0;
+}
+
+/* 패널 */
+.pick-panel {
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  background: #fff;
+}
+.pick-panel__head {
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  border-bottom: 1px solid #eee;
+}
+.pick-panel__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 옵션 행 */
+.pick-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 14px 12px;
+  border-bottom: 1px solid #f2f2f2;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.pick-row__radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid #d5d5d5;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  background: #fff;
+}
+.pick-row__name {
+  min-width: 62px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+.pick-row__badge {
+  font-style: normal;
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #fdece2;
+  color: #f0692c;
+  font-size: 12px;
+  font-weight: 700;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.pick-row__badge--red {
+  background: #fce3e3;
+  color: #e23c3c;
+}
+.pick-row__priceWrap {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+.pick-row__price {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  white-space: normal;
+}
+.pick-row__dc {
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 400;
+  color: #b5b5b5;
+}
+.pick-row__sub {
+  display: block;
+  font-size: 13px;
+  color: #999;
+  margin-top: 4px;
+}
+.pick-row__sub.is-accent {
+  color: #d85a30;
+  font-weight: 700;
+}
+
+/* 선택 상태 (체크리스트 #7: 활성화 상태 명확히 표시) */
+.pick-row.is-selected {
+  background: #fff8f5;
+}
+.pick-row.is-selected .pick-row__radio {
+  border: 5px solid #d85a30;
+}
+.pick-row.is-selected .pick-row__name {
+  font-weight: 700;
+}
+
+/* 최대 도달: 선택 상태(주황)는 유지하고 추가 클릭만 차단.
+   흐림 처리는 "품절/불가"로 오독될 수 있어 사용하지 않음 */
+.pick-row.is-maxed {
+  cursor: default;
+}
+.pick-row.is-maxed .pick-row__sub.is-accent {
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------------
+ * 카페24 기본 옵션 행 숨김 — 삭제 금지, 시각적 숨김만.
+ * 프로그래매틱 click()/trigger()는 display:none 상태에서도 동작합니다.
+ * 만약 담기가 동작하지 않는 스킨을 만나면 display:none 대신 아래
+ * 시각적 숨김(clip) 방식으로 교체하세요:
+ *   position:absolute; width:1px; height:1px; overflow:hidden;
+ *   clip:rect(0 0 0 0); margin:-1px;
+ * ------------------------------------------------------------------- */
+.pick-native-hidden {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .pick-panel__head {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .pick-row {
+    padding: 12px 14px;
+    flex-wrap: wrap;
+    gap: 14px;
+    row-gap: 4px;
+    min-height: 64px;
+  }
+  .pick-row__radio {
+    width: 22px;
+    height: 22px;
+  }
+  .pick-row__name {
+    min-width: 78px;
+    font-size: 14px;
+  }
+  .pick-row__price {
+    font-size: 13px;
+    white-space: normal;
+  }
+  .pick-row__dc {
+    font-size: 12px;
+  }
+  .pick-row__badge {
+    padding: 3px 8px;
+    font-size: 12px;
+  }
+  .pick-row__sub {
+    font-size: 11px;
+    margin-top: 2px;
+  }
+}
+
+@media (max-width: 420px) {
+  /* 좁은 폭: 가격 블록을 이름 아래 줄로 내림 (라디오 폭만큼 들여쓰기) */
+  .pick-row__priceWrap {
+    flex-basis: 100%;
+    margin-left: 30px;
+  }
+}
+
+/* 모바일 폭에서 옵션 영역이 화면 밖으로 밀리지 않도록 필요한 부분만 정리 */
+@media (max-width: 768px) {
+  body {
+    min-width: 0 !important;
+  }
+  #wrap,
+  #container,
+  #contents {
+    width: auto !important;
+    float: none !important;
+  }
+  /* 모바일 폭에서는 좌측 사이드 메뉴/우측 퀵메뉴 접음 (DOM 유지, 표시만) */
+  #sidebar,
+  #quick {
+    display: none !important;
+  }
+  /* 헤더/푸터 내부 고정폭 해제 */
+  #header .inner,
+  #footer .inner,
+  .xans-layout-logotop,
+  .xans-layout-footer,
+  .xans-layout-footer .utilMenu,
+  .xans-layout-footer .address {
+    width: auto !important;
+  }
+  /* 상품 이미지 / 정보 2단 → 1단 스택.
+     베이직 스킨은 detailArea의 padding-left:540px 자리에 이미지 컬럼을
+     넣는 구조라 패딩도 함께 해제해야 함 */
+  .xans-product-detail .detailArea {
+    padding-left: 0 !important;
+  }
+  .xans-product-detail .detailArea .imgArea,
+  .xans-product-detail .detailArea .infoArea {
+    float: none !important;
+    width: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .xans-product-detail .detailArea .imgArea img {
+    max-width: 100%;
+    height: auto;
+  }
+  /* 선택상품 목록 등 고정폭 테이블이 뷰포트를 넘지 않게 */
+  .xans-product-detail .infoArea table {
+    width: 100% !important;
+  }
+}

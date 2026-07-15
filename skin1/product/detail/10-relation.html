@@ -1,0 +1,50 @@
+<div module="product_relation" id="prdRelated" class="ec-base-tab gFlex">
+  <!--@css(/css/module/product/relation.css)-->
+  <ul class="menu">
+    <li><a href="#prdDetail">상품상세정보</a></li>
+    <li><a href="#prdInfo">상품구매안내</a></li>
+    <li class="{$disp_rel_review|display}">
+      <a href="#prdReview">상품사용후기</a>
+    </li>
+    <li class="{$disp_rel_qna|display}"><a href="#prdQnA">상품Q&amp;A</a></li>
+    <li class="selected"><a href="#prdRelated">관련상품</a></li>
+  </ul>
+
+  <div class="relation">
+    <h3>관련상품</h3>
+    <div module="product_relationlist">
+      <ul class="prdList">
+        <li class="item">
+          <div class="box">
+            <a href="{$link_product_detail}"><img src="{$img_small}" alt="{$seo_alt_tag}" class="thumb"
+            /></a>
+            <p><a href="{$link_product_detail}">{$name}</a></p>
+            <ul>
+              <li>
+                <strong class="{$product_sale_strike}">{$disp_product_price}{$product_tax_type_text}</strong>
+              </li>
+              <li class="salePrice {$sale_price_display|display}">
+                {$disp_sale_price}
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="item">
+          <div class="box">
+            <a href="{$link_product_detail}"><img src="{$img_small}" alt="{$seo_alt_tag}" class="thumb"
+            /></a>
+            <p><a href="{$link_product_detail}">{$name}</a></p>
+            <ul>
+              <li>
+                <strong class="{$product_sale_strike}">{$disp_product_price}{$product_tax_type_text}</strong>
+              </li>
+              <li class="salePrice {$sale_price_display|display}">
+                {$disp_sale_price}
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

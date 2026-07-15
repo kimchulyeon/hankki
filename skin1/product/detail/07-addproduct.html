@@ -1,0 +1,187 @@
+      <div class="productSet additional" module="product_addproduct">
+        <!--
+                $use_per_add_option = yes
+                -->
+        <div class="title">
+          <h3>추가구성상품 <span>추가로 구매를 원하시면 선택하세요.</span></h3>
+          <a href="#self" class="toggle"><img
+              src="//img.echosting.cafe24.com/skin/base/product/btn_additional_close.gif"
+              alt="추가구성상품 닫기"
+          /></a>
+        </div>
+        <ul class="product">
+          <li>
+            <div class="information">
+              <div class="thumbnail">
+                <a href="{$link_product_detail}"><img src="{$product_image}" alt="" id="{$image_id}"
+                /></a>
+              </div>
+              <p class="name" title="상품명">
+                <strong>{$product_name}</strong>
+              </p>
+              <p class="price {$product_price_display|display}" title="판매가">
+                <strong class="{$product_price_del}">{$product_price}{$product_tax_type_text}</strong>
+              </p>
+              <p
+                class="salePrice {$product_sale_price_display|display}"
+                title="할인판매가">
+                {$product_sale_price}
+              </p>
+            </div>
+            <ul class="option">
+              <li module="product_option">
+                <ul>
+                  <li>
+                    <strong class="name">{$option_name}</strong>
+                    {$form.option}
+                    <p class="value">{$option_desc}</p>
+                  </li>
+                  <li module="product_quantity">
+                    <div class="ec-base-qty">
+                      {$form.quantity}
+                      <a href="javascript:;" class="qtyUp eClearUp"><img
+                          src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif"
+                          id="{$quantity_up_id}"
+                          alt="증가"
+                          class="up {$quantity_up_class}"
+                      /></a>
+                      <a href="javascript:;" class="qtyDown eClearDown"><img
+                          src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif"
+                          id="{$quantity_down_id}"
+                          alt="감소"
+                          class="down {$quantity_down_class}"
+                      /></a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li module="product_noneoption">
+                <ul>
+                  <li>
+                    <strong class="name">상품선택</strong>
+                    {$form.noneoption}
+                  </li>
+                  <li module="product_quantity">
+                    <div class="ec-base-qty">
+                      {$form.quantity}
+                      <a href="javascript:;" class="qtyUp eClearUp"><img
+                          src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif"
+                          id="{$quantity_up_id}"
+                          alt="증가"
+                          class="up {$quantity_up_class}"
+                      /></a>
+                      <a href="javascript:;" class="qtyDown eClearDown"><img
+                          src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif"
+                          id="{$quantity_down_id}"
+                          alt="감소"
+                          class="down {$quantity_down_class}"
+                      /></a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li module="product_addoption">
+                <strong class="name">{$add_option_name}</strong>
+                {$form.add_option}
+                <span class="txtByte" title="현재글자수/최대글자수">(<strong class="length">0</strong>/{$option_maxlength})</span>
+              </li>
+
+              <li
+                class="{$add_option_push_button_display|display} selectButton"
+                id="{$add_option_push_button_id}">
+                <a
+                  href="#none"
+                  class="btnSubmit sizeS"
+                  onclick="{$add_action_push_button}">옵션선택</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <div class="information">
+              <div class="thumbnail">
+                <a href="{$link_product_detail}"><img src="{$product_image}" alt="" id="{$image_id}"
+                /></a>
+              </div>
+              <p class="name" title="상품명">
+                <strong>{$product_name}</strong>
+              </p>
+              <p class="price {$product_price_display|display}" title="판매가">
+                <strong class="{$product_price_del}">{$product_price}{$product_tax_type_text}</strong>
+              </p>
+              <p
+                class="salePrice {$product_sale_price_display|display}"
+                title="할인판매가">
+                {$product_sale_price}
+              </p>
+            </div>
+            <ul class="option">
+              <li module="product_option">
+                <ul>
+                  <li>
+                    <strong class="name">{$option_name}</strong>
+                    {$form.option}
+                    <p class="value">{$option_desc}</p>
+                  </li>
+                  <li module="product_quantity">
+                    <div class="ec-base-qty">
+                      {$form.quantity}
+                      <a href="javascript:;" class="qtyUp eClearUp"><img
+                          src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif"
+                          id="{$quantity_up_id}"
+                          alt="증가"
+                          class="up {$quantity_up_class}"
+                      /></a>
+                      <a href="javascript:;" class="qtyDown eClearDown"><img
+                          src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif"
+                          id="{$quantity_down_id}"
+                          alt="감소"
+                          class="down {$quantity_down_class}"
+                      /></a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li module="product_noneoption">
+                <ul>
+                  <li>
+                    <strong class="name">상품선택</strong>
+                    {$form.noneoption}
+                  </li>
+                  <li module="product_quantity">
+                    <div class="ec-base-qty">
+                      {$form.quantity}
+                      <a href="javascript:;" class="qtyUp eClearUp"><img
+                          src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif"
+                          id="{$quantity_up_id}"
+                          alt="증가"
+                          class="up {$quantity_up_class}"
+                      /></a>
+                      <a href="javascript:;" class="qtyDown eClearDown"><img
+                          src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif"
+                          id="{$quantity_down_id}"
+                          alt="감소"
+                          class="down {$quantity_down_class}"
+                      /></a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li module="product_addoption">
+                <strong class="name">{$add_option_name}</strong>
+                {$form.add_option}
+                <span class="txtByte" title="현재글자수/최대글자수">(<strong class="length">0</strong>/{$option_maxlength})</span>
+              </li>
+
+              <li
+                class="{$add_option_push_button_display|display} selectButton"
+                id="{$add_option_push_button_id}">
+                <a
+                  href="#none"
+                  class="btnSubmit sizeS"
+                  onclick="{$add_action_push_button}">옵션선택</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+

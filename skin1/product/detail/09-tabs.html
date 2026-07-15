@@ -1,0 +1,311 @@
+<div module="product_additional">
+  <!--@import(/board/report_popup.html)-->
+  <!--@css(/css/module/product/additional.css)-->
+  <div id="prdDetail" class="ec-base-tab gFlex">
+    <ul class="menu">
+      <li class="selected"><a href="#prdDetail">상품상세정보</a></li>
+      <li><a href="#prdInfo">상품구매안내</a></li>
+      <li class="{$review_display|display}">
+        <a href="#prdReview">상품사용후기</a>
+      </li>
+      <li class="{$qna_display|display}"><a href="#prdQnA">상품Q&amp;A</a></li>
+      <li><a href="#prdRelated">관련상품</a></li>
+    </ul>
+    <div class="cont">
+      <h3>상품상세정보</h3>
+      {$product_detail}
+    </div>
+  </div>
+
+  <div id="prdInfo" class="ec-base-tab gFlex">
+    <ul class="menu">
+      <li><a href="#prdDetail">상품상세정보</a></li>
+      <li class="selected"><a href="#prdInfo">상품구매안내</a></li>
+      <li class="{$review_display|display}">
+        <a href="#prdReview">상품사용후기</a>
+      </li>
+      <li class="{$qna_display|display}"><a href="#prdQnA">상품Q&amp;A</a></li>
+      <li><a href="#prdRelated">관련상품</a></li>
+    </ul>
+    <div class="cont">
+      <h3>상품결제정보</h3>
+      {$payment_info}
+    </div>
+    <div class="cont">
+      <h3>배송정보</h3>
+      <ul class="delivery">
+        <li>배송 방법 : {$shipping_method}</li>
+        <li>배송 지역 : {$shipping_area}</li>
+        <li>배송 비용 : {$shipping_fee}</li>
+        <li>배송 기간 : {$shipping_period}</li>
+        <li>배송 안내 : {$shipping_info}</li>
+      </ul>
+    </div>
+    <div class="cont">
+      <h3>교환 및 반품정보</h3>
+      {$exchange_info}
+    </div>
+    <div class="cont">
+      <h3>서비스문의</h3>
+      {$service_info}
+    </div>
+  </div>
+
+  <div id="prdReview" class="ec-base-tab gFlex {$review_display|display}">
+    <ul class="menu">
+      <li><a href="#prdDetail">상품상세정보</a></li>
+      <li><a href="#prdInfo">상품구매안내</a></li>
+      <li class="selected"><a href="#prdReview">상품사용후기</a></li>
+      <li><a href="#prdQnA">상품Q&amp;A</a></li>
+      <li><a href="#prdRelated">관련상품</a></li>
+    </ul>
+    <div class="board">
+      <h3>상품사용후기</h3>
+      <p class="desc">상품의 사용후기를 적어주세요.</p>
+
+      <div module="product_review">
+        <!--@js(/js/module/product/review.js)-->
+        <a name="use_review"></a>
+
+        <p class="noAccess {$deny_display|display}">글읽기 권한이 없습니다.</p>
+
+        <div class="minor {$adult_display|display}">
+          <p>
+            <img
+              src="//img.echosting.cafe24.com/skin/base_ko_KR/product/ico_under19.gif"
+              alt=""
+            />
+            <strong>"19세 미만의 미성년자"</strong>는 출입을 금합니다!
+          </p>
+          <p class="button">
+            <a href="/intro/board.html{$returnParam}" class="btnEm sizeS">성인인증 하기</a>
+          </p>
+        </div>
+
+        <div class="ec-base-table typeList">
+          <table border="1" summary="" class="{$list_display|display}">
+            <caption>
+              상품사용후기
+            </caption>
+            <colgroup>
+              <col style="width: 70px" />
+              <col style="width: auto" />
+              <col style="width: 100px" />
+              <col style="width: 100px" />
+              <col style="width: 80px" />
+              <col style="width: 80px" class="{$use_point_display|display}" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th scope="col">번호</th>
+                <th scope="col">제목</th>
+                <th scope="col">작성자</th>
+                <th scope="col">작성일</th>
+                <th scope="col">조회</th>
+                <th scope="col" class="{$use_point_display|display}">평점</th>
+              </tr>
+            </thead>
+            <tbody class="center">
+              <tr class="{$block_target_class}" {$block_data_attr}>
+                <td>{$no}</td>
+                <td class="subject left txtBreak">
+                  {$icon_re}{$icon_lock}
+                  <a
+                    href="{$link_board_detail}{$param_read}"
+                    class="{$block_content_class}">{$subject}</a>
+                  {$icon_new}{$icon_hit}{$icon_file}<span class="txtWarn">{$comment_count}</span>
+                </td>
+                <td>{$member_icon} {$writer}</td>
+                <td class="txtInfo txt11">{$write_date}</td>
+                <td class="txtInfo txt11">{$hit_count}</td>
+                <td class="{$use_point_display|display}">
+                  <img
+                    src="//img.echosting.cafe24.com/skin/base/board/ico_point{$point_count}.gif"
+                    alt="{$point_count}점"
+                  />
+                </td>
+              </tr>
+              <tr class="{$block_target_class}" {$block_data_attr}>
+                <td>{$no}</td>
+                <td class="subject left txtBreak">
+                  {$icon_re}{$icon_lock}
+                  <a
+                    href="{$link_board_detail}{$param_read}"
+                    class="{$block_content_class}">{$subject}</a>
+                  {$icon_new}{$icon_hit}{$icon_file}<span class="txtWarn">{$comment_count}</span>
+                </td>
+                <td>{$member_icon} {$writer}</td>
+                <td class="txtInfo txt11">{$write_date}</td>
+                <td class="txtInfo txt11">{$hit_count}</td>
+                <td class="{$use_point_display|display}">
+                  <img
+                    src="//img.echosting.cafe24.com/skin/base/board/ico_point{$point_count}.gif"
+                    alt="{$point_count}점"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="ec-base-button typeBorder">
+        <span class="gRight">
+          <a href="{$review_write}" class="btnNormal">상품후기쓰기</a>
+          <a href="{$review_list}" class="btnNormal">모두 보기</a>
+        </span>
+      </p>
+
+      <div module="product_reviewpaging" class="ec-base-paginate typeSub">
+        <a href="{$param_first}" class="first"><img
+            src="//img.echosting.cafe24.com/skin/base/common/btn_page_first2.gif"
+            alt="첫 페이지"
+        /></a>
+        <a href="{$param_before}"><img
+            src="//img.echosting.cafe24.com/skin/base/common/btn_page_prev2.gif"
+            alt="이전 페이지"
+        /></a>
+        <ol>
+          <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+          <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+          <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+          <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+          <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        </ol>
+        <a href="{$param_next}"><img
+            src="//img.echosting.cafe24.com/skin/base/common/btn_page_next2.gif"
+            alt="다음 페이지"
+        /></a>
+        <a href="{$param_last}" class="last"><img
+            src="//img.echosting.cafe24.com/skin/base/common/btn_page_last2.gif"
+            alt="마지막 페이지"
+        /></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="prdQnA" class="ec-base-tab gFlex {$qna_display|display}">
+    <ul class="menu">
+      <li><a href="#prdDetail">상품상세정보</a></li>
+      <li><a href="#prdInfo">상품구매안내</a></li>
+      <li><a href="#prdReview">상품사용후기</a></li>
+      <li class="selected"><a href="#prdQnA">상품Q&amp;A</a></li>
+      <li><a href="#prdRelated">관련상품</a></li>
+    </ul>
+
+    <div class="board">
+      <h3>상품 Q&amp;A</h3>
+      <p class="desc">상품에 대해 궁금한 점을 해결해 드립니다.</p>
+
+      <div module="product_qna">
+        <!--@js(/js/module/product/qna.js)-->
+        <a name="use_qna"></a>
+
+        <p class="noAccess {$deny_display|display}">글읽기 권한이 없습니다.</p>
+
+        <div class="minor {$adult_display|display}">
+          <p>
+            <img
+              src="//img.echosting.cafe24.com/skin/base_ko_KR/product/ico_under19.gif"
+              alt=""
+            />
+            <strong>"19세 미만의 미성년자"</strong>는 출입을 금합니다!
+          </p>
+          <p class="button">
+            <a href="/intro/board.html{$returnParam}" class="btnEm sizeS">성인인증 하기</a>
+          </p>
+        </div>
+
+        <div class="ec-base-table typeList">
+          <table border="1" summary="" class="{$list_display|display}">
+            <caption>
+              상품 Q&amp;A
+            </caption>
+            <colgroup>
+              <col style="width: 70px" />
+              <col style="width: 134px" />
+              <col style="width: auto" />
+              <col style="width: 80px" />
+              <col style="width: 100px" />
+              <col style="width: 55px" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th scope="col">번호</th>
+                <th scope="col">카테고리</th>
+                <th scope="col">제목</th>
+                <th scope="col">작성자</th>
+                <th scope="col">작성일</th>
+                <th scope="col">조회</th>
+              </tr>
+            </thead>
+            <tbody class="center">
+              <tr class="{$block_target_class}" {$block_data_attr}>
+                <td>{$no}</td>
+                <td>{$category_name}</td>
+                <td class="subject left txtBreak">
+                  {$icon_re}{$icon_lock}
+                  <a
+                    href="{$link_board_detail}{$param_read}"
+                    class="{$block_content_class}">{$subject}</a>
+                  {$icon_new}{$icon_hit}{$icon_file}<span class="txtWarn">{$comment_count}</span>
+                </td>
+                <td>{$member_icon} {$writer}</td>
+                <td class="txtInfo txt11">{$write_date}</td>
+                <td class="txtInfo txt11">{$hit_count}</td>
+              </tr>
+              <tr class="{$block_target_class}" {$block_data_attr}>
+                <td>{$no}</td>
+                <td>{$category_name}</td>
+                <td class="subject left txtBreak">
+                  {$icon_re}{$icon_lock}
+                  <a
+                    href="{$link_board_detail}{$param_read}"
+                    class="{$block_content_class}">{$subject}</a>
+                  {$icon_new}{$icon_hit}{$icon_file}<span class="txtWarn">{$comment_count}</span>
+                </td>
+                <td>{$member_icon} {$writer}</td>
+                <td class="txtInfo txt11">{$write_date}</td>
+                <td class="txtInfo txt11">{$hit_count}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="ec-base-button typeBorder">
+        <span class="gRight">
+          <a href="{$qna_write}" class="btnNormal">상품문의하기</a>
+          <a href="{$qna_list}" class="btnNormal">모두 보기</a>
+        </span>
+      </p>
+
+      <div module="product_qnapaging" class="ec-base-paginate typeSub">
+        <a href="{$param_first}" class="first"><img
+            src="//img.echosting.cafe24.com/skin/base/common/btn_page_first2.gif"
+            alt="첫 페이지"
+        /></a>
+        <a href="{$param_before}"><img
+            src="//img.echosting.cafe24.com/skin/base/common/btn_page_prev2.gif"
+            alt="이전 페이지"
+        /></a>
+        <ol>
+          <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+          <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+          <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+          <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+          <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        </ol>
+        <a href="{$param_next}"><img
+            src="//img.echosting.cafe24.com/skin/base/common/btn_page_next2.gif"
+            alt="다음 페이지"
+        /></a>
+        <a href="{$param_last}" class="last"><img
+            src="//img.echosting.cafe24.com/skin/base/common/btn_page_last2.gif"
+            alt="마지막 페이지"
+        /></a>
+      </div>
+    </div>
+  </div>
+</div>
+

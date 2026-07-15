@@ -1,0 +1,119 @@
+      <div module="product_detaildesign">
+        <!--
+                    출력 갯수 지정 변수, 없으면 설정된 전체가 나옵니다.
+                    count = 10
+                -->
+        <table border="1" summary="">
+          <caption>
+            {$name} 기본 정보
+          </caption>
+          <tbody>
+            <tr class="{$item_display|display}">
+              <th scope="row">{$item_title}</th>
+              <td>{$item_content}</td>
+            </tr>
+            <tr class="{$item_display|display}">
+              <th scope="row">{$item_title}</th>
+              <td>{$item_content}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!--- 렌탈서비스 -->
+      <table
+        border="1"
+        summary=""
+        class="{$rental_information_display|display}">
+        <tbody>
+          <tr class="rental">
+            <th scope="row">월 렌탈 금액</th>
+            <td>
+              <p class="rental-maximum">
+                월
+                <span class="rental-maximum-price">{$rental_maximum_price|numberformat}</span>원
+              </p>
+              <span>(<span class="rental-maximum-term">{$rental_maximum_term}</span>개월 기준)</span>
+              <ul module="product_rental">
+                <li>
+                  <span class="rental-term">{$rental_term}</span>개월 / 월
+                  <span class="rental-price">{$rental_price|numberformat}</span>원
+                </li>
+                <li>
+                  <span class="rental-term">{$rental_term}</span>개월 / 월
+                  <span class="rental-price">{$rental_price|numberformat}</span>원
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="regularDelivery {$regular_delivery_display|display}">
+        <table border="1" summary="정기결제">
+          <caption>
+            정기결제
+          </caption>
+          <tbody>
+            <tr>
+              <th scope="row">구매방법</th>
+              <td>
+                <label class="gLabel"><span class="{$one_time_purchase_display|display}">{$regular_deliveryT}</span>
+                  정기배송<span
+                    class="badge {$regular_delivery_discount_display|display}">{$max_discount_value} <i class="icoDown">할인</i></span></label>
+                <label class="gLabel {$one_time_purchase_display|display}">{$regular_deliveryF} 1회구매</label>
+              </td>
+            </tr>
+            <tr
+              class="shippingCycle {$regular_cycle_period|display}"
+              id="{$regular_cycle_period_id}">
+              <th scope="row">배송주기</th>
+              <td>{$regularPeriod}</td>
+            </tr>
+            <tr
+              class="shippingNum {$regular_count_display|display}"
+              id="{$regular_count_id}">
+              <th scope="row">정기배송 횟수</th>
+              <td>{$regularCount}</td>
+            </tr>
+            <tr class="shippingGuide" id="{$regular_info_id}">
+              <th scope="row"><span class="displaynone">안내사항</span></th>
+              <td>
+                <div
+                  class="info {$regular_delivery_discount_display|display}"
+                  id="{$regular_delivery_discount_id}">
+                  <p class="title">
+                    <strong>정기배송 할인</strong>
+                    <span class="icoSave">save</span>
+                  </p>
+                  <ul module="product_regularDiscount">
+                    <li>
+                      {$discount_count}차 이상 구매 시 : {$discount_value}
+                      <span class="icoDown">할인</span>
+                    </li>
+                    <li>
+                      {$discount_count}차 이상 구매 시 : {$discount_value}
+                      <span class="icoDown">할인</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="info">
+                  <ul class="ec-base-help typeDash txt11">
+                    <li>
+                      배송주기, 정기배송 횟수는 상품 전체에 동일하게 적용됩니다.
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="{$naver_mileage_exception_display|display}">
+        <img
+          src="//img.echosting.cafe24.com/skin/base_ko_KR/product/txt_naver.gif"
+          alt="개인결제창을 통한 결제 시 네이버 마일리지 적립 및 사용이 가능합니다."
+        />
+      </p>
+
