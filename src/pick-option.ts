@@ -164,6 +164,10 @@
     new MutationObserver(function () {
       _unlock();
       _render();
+      /* X 삭제 후 남아 있을 수 있는 기본 옵션 선택 상태 정리 */
+      setTimeout(function () {
+        if (C24) C24.clearStaleSelections(groups, listRoot);
+      }, 50);
     }).observe(listRoot, { childList: true, subtree: true });
   }
 

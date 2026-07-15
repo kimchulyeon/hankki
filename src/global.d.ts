@@ -53,6 +53,7 @@ interface PickOptionCafe24Adapter {
   parseGroups(selectEl: HTMLSelectElement | null): PickOptionGroup[];
   readCounts(listRoot: Element | null): PickOptionCounts;
   triggerNative(slot: PickOptionSlot, selectEl: HTMLSelectElement | null): boolean;
+  clearStaleSelections(groups: PickOptionGroup[], listRoot: Element | null): void;
 }
 
 interface PickOptionNamespace {

@@ -104,5 +104,26 @@
                 selectEl.dispatchEvent(new Event("change", { bubbles: true }));
             return true;
         },
+        /* X로 지운 뒤에도 카페24 버튼에 선택 표시가 남는 경우가 있어
+         * 목록에는 없는데 선택된 상태인 버튼만 한 번 눌러 해제한다 */
+        clearStaleSelections(groups, listRoot) {
+            const counts = this.readCounts(listRoot);
+            const buttons = document.querySelectorAll("li[option_value].ec-product-selected");
+            Array.prototype.forEach.call(buttons, function (button) {
+                const code = (button.getAttribute("option_value") || "").trim();
+                for (let i = 0; i < groups.length; i++) {
+                    const group = groups[i];
+                    for (let j = 0; j < group.slots.length; j++) {
+                        const slot = group.slots[j];
+                        if (slot.value !== code)
+                            continue;
+                        const used = counts[group.base] ? counts[group.base].used : {};
+                        if (!used[slot.name])
+                            button.click();
+                        return;
+                    }
+                }
+            });
+        },
     };
 })();
