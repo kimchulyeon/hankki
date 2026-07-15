@@ -1,0 +1,108 @@
+"use strict";
+/* 카페24 기본 옵션 DOM을 읽고, 기본 구매 흐름을 원격으로 트리거하는 어댑터.
+ * - findSelect: 카페24 기본 옵션 select를 찾음
+ * - findListRoot: 선택상품 목록을 감시할 루트 DOM을 찾음
+ * - findBasePrice: 상품 기본 판매가를 읽음
+ * - parseGroups: 옵션값을 suffix 기준으로 골라담기 그룹으로 변환
+ * - readCounts: 선택상품 목록에서 현재 담긴 옵션 수를 읽음
+ * - triggerNative: 카페24 기본 옵션 버튼/select를 원격 트리거
+ */
+(function () {
+    "use strict";
+    const PO = (window.PickOption = window.PickOption || {});
+    const U = PO.utils;
+    if (!U)
+        return;
+    PO.cafe24 = {
+        findSelect() {
+            return document.querySelector('select[name^="option"], select[id^="product_option_id"]');
+        },
+        findListRoot() {
+            return (document.querySelector("tbody.option_products") ||
+                document.getElementById("totalProducts") ||
+                document.querySelector('[id^="totalProducts"]'));
+        },
+        findBasePrice(fallbackBasePrice) {
+            const el = document.querySelector("#span_product_price_text");
+            const price = el ? parseInt(U.txt(el).replace(/[^\d]/g, ""), 10) : 0;
+            return price || fallbackBasePrice || 0;
+        },
+        parseGroups(selectEl) {
+            const groups = [];
+            const byBase = {};
+            if (!selectEl)
+                return groups;
+            Array.prototype.forEach.call(selectEl.options, function (option) {
+                const code = (option.value || "").trim();
+                if (!code || code === "*" || code === "**")
+                    return;
+                const raw = (option.text || "").trim();
+                const name = raw.replace(U.PRICE_RE, "").trim();
+                if (!name)
+                    return;
+                const match = name.match(/^(.+)_(\d+)$/);
+                const base = match ? match[1] : name;
+                if (!byBase[base]) {
+                    byBase[base] = { base: base, slots: [], addPrice: 0 };
+                    groups.push(byBase[base]);
+                }
+                byBase[base].slots.push({
+                    name: name,
+                    value: code,
+                    ord: match ? parseInt(match[2], 10) : 0,
+                });
+                const priceMatch = raw.match(U.PRICE_RE);
+                if (priceMatch) {
+                    byBase[base].addPrice =
+                        (priceMatch[1] === "-" ? -1 : 1) *
+                            parseInt(priceMatch[2].replace(/,/g, ""), 10);
+                }
+            });
+            groups.forEach(function (group) {
+                group.slots.sort(function (a, b) {
+                    return a.ord - b.ord;
+                });
+            });
+            return groups;
+        },
+        readCounts(listRoot) {
+            const counts = {};
+            if (!listRoot)
+                return counts;
+            Array.prototype.forEach.call(listRoot.querySelectorAll("tr.option_product"), function (row) {
+                const productName = row.querySelector(".product span");
+                if (!productName)
+                    return;
+                const name = U.txt(productName).replace(U.PRICE_RE, "").trim();
+                const base = U.baseOf(name);
+                if (!counts[base])
+                    counts[base] = { n: 0, used: {} };
+                counts[base].n++;
+                counts[base].used[name] = true;
+            });
+            return counts;
+        },
+        triggerNative(slot, selectEl) {
+            const buttons = document.querySelectorAll("li[option_value], ul[option_style] li, .ec-product-button li");
+            for (let i = 0; i < buttons.length; i++) {
+                const optionValue = buttons[i].getAttribute("option_value");
+                if (optionValue === slot.value ||
+                    optionValue === slot.name ||
+                    (!optionValue && U.txt(buttons[i]) === slot.name)) {
+                    buttons[i].click();
+                    return true;
+                }
+            }
+            if (!selectEl)
+                return false;
+            selectEl.value = slot.value;
+            if (selectEl.value !== slot.value)
+                return false;
+            if (window.jQuery)
+                window.jQuery(selectEl).trigger("change");
+            else
+                selectEl.dispatchEvent(new Event("change", { bubbles: true }));
+            return true;
+        },
+    };
+})();

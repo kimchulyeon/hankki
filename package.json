@@ -1,0 +1,31 @@
+{
+  "name": "egnis",
+  "version": "1.0.0",
+  "description": "카페24 상품 상세페이지의 기본 구매/장바구니 흐름을 유지하면서 기본 옵션 영역 위에 골라담기 형태의 커스텀 옵션 UI를 추가했습니다.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "npm run build && node --check skin1/js/pick-option-utils.js && node --check skin1/js/pick-option-cafe24-adapter.js && node --check skin1/js/pick-option.js && node --check skin1/js/pick-option-config.js",
+    "deploy": "npm run build && node scripts/deploy.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimchulyeon/hankki.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kimchulyeon/hankki/issues"
+  },
+  "homepage": "https://github.com/kimchulyeon/hankki#readme",
+  "devDependencies": {
+    "ssh2-sftp-client": "^12.1.1",
+    "typescript": "^7.0.2"
+  },
+  "private": "true"
+}
